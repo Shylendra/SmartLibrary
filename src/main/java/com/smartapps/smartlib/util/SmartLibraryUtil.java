@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration.AccessLevel;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -30,6 +33,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.smartapps.smartlib.dto.ErrorMessage;
 
 public class SmartLibraryUtil {
 	
@@ -149,5 +153,15 @@ public class SmartLibraryUtil {
 	 public static <T> List<T> mapToObjectList(String sourceJsonString, Class<T> targetClass) throws IOException {
 		 return createObjectMapper().readValue(sourceJsonString, createObjectMapper().getTypeFactory().constructCollectionType(List.class, targetClass));
 	 }
+	 
+	 public static ResponseEntity<Object> createErrorResponse(HttpStatus status, List<String> errors, HttpHeaders headers) {
+		return new ResponseEntity<>(ErrorMessage.builder()
+				.code(0)
+				.timestamp(SmartDateUtil.getCurrentSystemDateTimeStr())
+				.errors(errors).build(),
+				headers,
+				status);
+	}
+
 	 
 }
