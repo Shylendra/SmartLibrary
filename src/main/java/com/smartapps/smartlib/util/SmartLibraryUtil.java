@@ -4,13 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URI;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -36,21 +32,6 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.smartapps.smartlib.dto.ErrorMessage;
 
 public class SmartLibraryUtil {
-	
-	 public static final String SYS_DATE_FORMAT = "yyyy-MM-dd";
-	 
-	 public static final String SYS_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS zzz";
-	 
-	 public static Optional<Date> currentSysDate = Optional.of(new Date(System.currentTimeMillis()));
-	 
-	 public static boolean isValidEmployeeNumber(String empNumber) {
-		 if(StringUtils.isNotEmpty(empNumber)) {
-			 if(empNumber.length() <= 8) {
-				 return true;
-			 }
-		 }
-		 return false;
-	 }
 	 
 	 public static URI constructUri(String url, Map<String, String> pathParams, Map<String, String> queryParams) {
 		 
@@ -66,16 +47,6 @@ public class SmartLibraryUtil {
 			        .toUri();
 		 
 		 return uri;
-	 }
-	 
-	 public static String getCurrentSystemDate() {
-		 DateFormat df = new SimpleDateFormat(SYS_DATE_FORMAT);
-		 return df.format(currentSysDate.get());
-	 }
-	 
-	 public static String getCurrentSystemDateTime() {
-		 DateFormat df = new SimpleDateFormat(SYS_DATE_TIME_FORMAT);
-		 return df.format(currentSysDate.get());
 	 }
 	 
 	 public static ModelMapper createModelMapper() {
