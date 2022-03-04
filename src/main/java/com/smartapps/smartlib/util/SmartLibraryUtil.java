@@ -3,6 +3,7 @@ package com.smartapps.smartlib.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.InetAddress;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -29,10 +30,40 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.maxmind.geoip2.DatabaseReader;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import com.maxmind.geoip2.model.CityResponse;
 import com.smartapps.smartlib.dto.ErrorMessage;
+import com.smartapps.smartlib.dto.GeoLocationDto;
 
 public class SmartLibraryUtil {
 	 
+	public static GeoLocationDto retrievepGeoLocation(final String ipAddress, final String dbLocation) throws IOException, GeoIp2Exception {
+		CityResponse cityResponse =  createCityResponse(ipAddress, dbLocation);
+		return GeoLocationDto.builder()
+				.ipAddress(ipAddress)
+				.countryCode("")
+				.countryName(cityResponse.getCountry().getName())
+				.cityCode("")
+				.cityName(cityResponse.getCity().getName())
+				.postalCode(cityResponse.getPostal().getCode())
+				.state(cityResponse.getLeastSpecificSubdivision().getName())
+				.latitude(cityResponse.getLocation().getLatitude().toString())
+				.longitude(cityResponse.getLocation().getLongitude().toString())
+				.timeZone(cityResponse.getLocation().getTimeZone()).build();
+	}
+
+	public static CityResponse createCityResponse(final String ipAddress, final String dbLocation) throws IOException, GeoIp2Exception {
+		
+		//https://www.baeldung.com/geolocation-by-ip-with-maxmind
+		
+		File database = new File(dbLocation);
+	    DatabaseReader dbReader = new DatabaseReader.Builder(database)
+	      .build();
+	    InetAddress inetAddress = InetAddress.getByName(ipAddress);
+	    return dbReader.city(inetAddress);
+	}
+	
 	 public static URI constructUri(String url, Map<String, String> pathParams, Map<String, String> queryParams) {
 		 
 		 MultiValueMap<String, String> queryParamsMultivalueMap = new LinkedMultiValueMap<String, String>();
