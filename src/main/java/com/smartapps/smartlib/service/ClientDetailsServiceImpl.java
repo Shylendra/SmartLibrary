@@ -20,6 +20,7 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
 	}
 
 	@Override
+	/* (src/main/resources/databases/GeoLite2-City.mmdb) */
 	public GeoLocationDto retrieveGeoLocationDetails(String ipAddress, String dbLocation) throws IOException, GeoIp2Exception {
 		return SmartLibraryUtil.retrievepGeoLocation(ipAddress, dbLocation);
 	}
