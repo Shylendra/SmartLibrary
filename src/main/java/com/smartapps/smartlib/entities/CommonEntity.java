@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class CommonEntity {
 
 	@Column(name = "PROC_TS")
 	private Timestamp procTs = SmartDateUtil.getCurrentSystemTimestamp();

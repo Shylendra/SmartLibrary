@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartapps.smartlib.util.SmartDateUtil;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseDto {
+@Schema(name = "CommonDto")
+public class CommonDto {
 	
 	@JsonIgnore
 	private String procTs;
