@@ -40,6 +40,15 @@ import com.smartapps.smartlib.exception.ResourceNotFoundException;
 
 public class SmartLibraryUtil {
 
+	public static final String APPLICATION_ID_PREFIX = "SMART_";
+	
+	 public static boolean isValidAppid(String appId) {
+		 if(StringUtils.isNotEmpty(appId) && appId.startsWith(APPLICATION_ID_PREFIX)) {
+			return true;
+		 }
+		 return false;
+	 }
+
 	public static GeoLocationDto retrievepGeoLocation(final String ipAddress, final String dbLocation)
 			throws IOException, GeoIp2Exception {
 		CityResponse cityResponse = createCityResponse(ipAddress, dbLocation);
