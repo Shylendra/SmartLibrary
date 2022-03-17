@@ -13,12 +13,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @ApiResponses(value = { 
-		@ApiResponse(responseCode = "200", description = "Successfully retrieved."), 
 		@ApiResponse(responseCode = "400", description = "Bad request."),
-		@ApiResponse(responseCode = "401", description = "You are not authorized to access the resource."),
-		@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden."),
 		@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found.")
     })
-public @interface GlobalApiReponses {
+public @interface GlobalApiReponsesDelete {
 
 }
