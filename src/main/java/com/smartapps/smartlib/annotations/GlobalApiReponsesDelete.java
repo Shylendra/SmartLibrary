@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.smartapps.smartlib.util.SmartHttpUtil;
+
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -13,8 +15,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @ApiResponses(value = { 
-		@ApiResponse(responseCode = "400", description = "Bad request."),
-		@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found.")
+		@ApiResponse(responseCode = SmartHttpUtil.RC_400, description = SmartHttpUtil.RCDESC_400),
+		@ApiResponse(responseCode = SmartHttpUtil.RC_404, description = SmartHttpUtil.RCDESC_404)
     })
 public @interface GlobalApiReponsesDelete {
 

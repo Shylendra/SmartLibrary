@@ -21,6 +21,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 		@ApiResponse(responseCode = SmartHttpUtil.RC_403, description = SmartHttpUtil.RCDESC_403),
 		@ApiResponse(responseCode = SmartHttpUtil.RC_404, description = SmartHttpUtil.RCDESC_404)
     })
-public @interface GlobalApiReponses {
+public @interface GlobalApiReponsesGet {
 
 }
