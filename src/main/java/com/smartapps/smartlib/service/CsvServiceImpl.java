@@ -26,9 +26,9 @@ public class CsvServiceImpl<T> implements CsvService<T> {
 		
 		Reader csvReader = CsvUtil.getReader(csvFileNamePath);
 		if(csvReader != null) {
-			CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(CsvUtil.getReader(csvFileNamePath))
+			CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
 					.withMappingStrategy(strategy)
-					.withSkipLines(1)
+					//.withSkipLines(1)
 					.withIgnoreLeadingWhiteSpace(true)
 					.build();
 			
