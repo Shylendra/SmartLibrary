@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public final class SmartHttpUtil {
 	
 	//https://simplesolution.dev/spring-boot-web-get-client-ip-address/
@@ -63,6 +66,15 @@ public final class SmartHttpUtil {
 		}
 		
 		return ipAddress;
+	}
+	
+	public static String getServerHostName() {
+		try {
+			return InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			log.debug("UnknownHostException: ", e);
+			return null;
+		}
 	}
 
 }
