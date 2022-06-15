@@ -33,6 +33,10 @@ public final class SmartHttpUtil {
 	public static final String RC_404 = "404";
 	public static final String RCDESC_404 = "The resource you were trying to reach is not found.";
 
+	/* HTTP Request Header Elements */
+	public static final String SA_APP_ID = "sa-app-id";
+	public static final String SA_USER_ID = "sa-user-id";
+	public static final String SA_GROUPS = "sa-groups";
 	
 	private static final String LOCALHOST_IPV4 = "127.0.0.1";
 	private static final String LOCALHOST_IPV6 = "0:0:0:0:0:0:0:1";
