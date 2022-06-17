@@ -6,10 +6,10 @@ import java.util.Map;
 public enum AssetTypeEnum {
 
 	UNKNOWN("UNKNOWN", "unknown"),
-	IMAGES("IMAGES", "images"),
-	DOCUMENTS("DOCUMENTS", "documents"),
-	VIDEOS("VIDEOS", "videos"),
-	AUDIOS("AUDIOS", "audios");
+	IMAGE("IMAGES", "image"),
+	DOCUMENT("DOCUMENT", "document"),
+	VIDEO("VIDEO", "video"),
+	AUDIO("AUDIO", "audio");
 
     private final String key;
     private final String value;

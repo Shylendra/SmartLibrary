@@ -12,7 +12,12 @@ public class SmartDateUtil {
 
 	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	
+	public static final DateTimeFormatter DATE_TIME_FORMAT_UNIQUE = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+
+	public static String getCurrentSystemDateTimeUniqueStr() {
+		return LocalDateTime.now().format(DATE_TIME_FORMAT_UNIQUE);
+	}
+
 	public static String getCurrentSystemDateTimeStr() {
 		return LocalDateTime.now().format(DATE_TIME_FORMAT);
 	}
