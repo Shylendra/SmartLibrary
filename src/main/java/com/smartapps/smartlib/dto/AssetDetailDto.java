@@ -15,12 +15,15 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private int id;
 	private String host;
 	private String bucketName;
 	private String type;//AssetTypeEnum
 	private String name;
 	private String filePath;
 	private String url;
+
+	public AssetDetailDto() {}
 
 	public AssetDetailDto(String assetType, String appId, String userId, String fileName) {
 		this.host = AwsUtil.S3_HOST;

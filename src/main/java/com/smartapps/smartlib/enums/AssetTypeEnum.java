@@ -5,6 +5,7 @@ import java.util.Map;
 
 public enum AssetTypeEnum {
 
+	UNKNOWN("UNKNOWN", "unknown"),
 	IMAGES("IMAGES", "images"),
 	DOCUMENTS("DOCUMENTS", "documents"),
 	VIDEOS("VIDEOS", "videos"),
