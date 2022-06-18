@@ -27,6 +27,8 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 	private String bucketName;
 	private String type;//AssetTypeEnum
 	private String name;
+	private String category;
+	private String journeyDate;
 	private String filePath;
 	private String url;
 
@@ -39,6 +41,8 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 		this.setProcApprId(appId);
 		this.setProcUserId(userId);
 		this.name = formatFileName(multipartFile.getOriginalFilename());
+		this.category = category;
+		this.journeyDate = journeyDate;
 		this.filePath = String.format("%s/%s/%s/%s/%s", this.type, this.getProcApprId(), this.getProcUserId(), category, this.name);
 		if(StringUtils.isNotEmpty(journeyDate)) {
 			this.filePath = String.format("%s/%s/%s/%s/%s/%s", this.type, this.getProcApprId(), this.getProcUserId(), category, journeyDate, this.name);
