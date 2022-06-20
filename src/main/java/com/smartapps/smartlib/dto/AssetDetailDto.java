@@ -31,6 +31,9 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 	private String journeyDate;
 	private String filePath;
 	private String url;
+	private String lastModified;
+	private String eTag;
+	private long size;
 
 	public AssetDetailDto() {}
 
