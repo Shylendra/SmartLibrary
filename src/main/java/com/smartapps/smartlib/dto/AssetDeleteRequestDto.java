@@ -30,7 +30,7 @@ public class AssetDeleteRequestDto extends CommonDto implements Serializable {
 	private List<String> keys;
 
 	@JsonIgnore
-	private List<KeyVersion> retrieveKeyVersion() {
+	public List<KeyVersion> retrieveKeyVersion() {
 		List<KeyVersion> keyVersions = new ArrayList<>();
 		for(String key:keys) {
 			keyVersions.add(new KeyVersion(key));
