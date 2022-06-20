@@ -1,9 +1,7 @@
 package com.smartapps.smartlib.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
-import com.amazonaws.services.s3.model.DeleteObjectsRequest.KeyVersion;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.smartapps.smartlib.util.SmartLibraryUtil;
@@ -19,13 +17,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@Schema(name = "AssetDeleteRequest")
-public class AssetDeleteRequestDto extends CommonDto implements Serializable {
+@Schema(name = "AssetDeleteResponse")
+public class AssetDeleteResponseDto extends CommonDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String bucketName;
-	private List<KeyVersion> keys;
+	private Integer count;
 
 	@Override
 	public String toString() {
