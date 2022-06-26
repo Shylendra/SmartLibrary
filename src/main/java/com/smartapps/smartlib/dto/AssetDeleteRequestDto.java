@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.amazonaws.services.s3.model.DeleteObjectsRequest.KeyVersion;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,14 +28,13 @@ public class AssetDeleteRequestDto extends CommonDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String bucketName;
 	private List<String> keys;
 
 	@JsonIgnore
 	public List<KeyVersion> retrieveKeyVersion() {
 		List<KeyVersion> keyVersions = new ArrayList<>();
 		for(String key:keys) {
-			keyVersions.add(new KeyVersion(key));
+			keyVersions.add(new KeyVersion(StringUtils.remove(key, "https://smartapps-assets.s3.amazonaws.com/")));
 		}
 		return keyVersions;
 	}

@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.smartapps.smartlib.util.AwsUtil;
 import com.smartapps.smartlib.util.SmartDateUtil;
@@ -17,6 +18,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Schema(name = "AssetDetail")
 public class AssetDetailDto extends CommonDto implements Serializable {
 
@@ -46,11 +48,8 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 		this.name = formatFileName(multipartFile.getOriginalFilename());
 		this.category = category;
 		this.journeyDate = journeyDate;
-		this.filePath = String.format("%s/%s/%s/%s/%s", this.type, this.getProcApprId(), this.getProcUserId(), category, this.name);
-		if(StringUtils.isNotEmpty(journeyDate)) {
-			this.filePath = String.format("%s/%s/%s/%s/%s/%s", this.type, this.getProcApprId(), this.getProcUserId(), category, journeyDate, this.name);
-		}
-		this.url = String.format("%s/%s/%s", this.host, this.bucketName, this.filePath);
+		this.filePath = AwsUtil.prepareS3Query(this.type, this.getProcApprId(), this.getProcUserId(), category, journeyDate, this.name);
+		this.url = AwsUtil.prepareS3Url(this.filePath);
 	}
 	
 	@JsonIgnore
