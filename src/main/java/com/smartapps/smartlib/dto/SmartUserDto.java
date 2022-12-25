@@ -28,10 +28,7 @@ public class SmartUserDto implements Serializable {
 	
 	private int id;
 	private String name;
-
-	@JsonIgnore
 	private String password;
-	
 	private String roles;
 	private String firstName;
 	private String middleName;
