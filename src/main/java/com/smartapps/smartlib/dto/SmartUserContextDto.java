@@ -20,8 +20,25 @@ public class SmartUserContextDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private int id;
 	private String appId;
-	private String userName;
+	private String name;
 	private String roles;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String about;
+	private String company;
+	private String job;
+	private String gender;
+	private String dob;
+	private String phone;
+	private String email;
+	private String profilePhotoPath;
+	private Boolean active;
+	private String twitterUrl;
+	private String facebookUrl;
+	private String instagramUrl;
+	private String linkedInUrl;
 	
 }

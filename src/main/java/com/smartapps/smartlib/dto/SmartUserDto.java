@@ -3,11 +3,16 @@ package com.smartapps.smartlib.dto;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.smartapps.smartlib.converter.TrimConverter;
 import com.smartapps.smartlib.util.SmartDateUtil;
 import com.smartapps.smartlib.util.SmartLibraryUtil;
 
@@ -33,12 +38,20 @@ public class SmartUserDto implements Serializable {
 	private String firstName;
 	private String middleName;
 	private String lastName;
+	private String about;
+	private String company;
+	private String job;
 	private String gender;
 	private String dob;
 	private String phone;
 	private String email;
 	private String profilePhotoPath;
 	private Boolean active;
+	private String twitterUrl;
+	private String facebookUrl;
+	private String instagramUrl;
+	private String linkedInUrl;
+	private List<AddressDto> addresses;
 	
 	@JsonIgnore
 	private String procTs;
