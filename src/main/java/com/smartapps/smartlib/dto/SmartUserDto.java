@@ -31,7 +31,7 @@ public class SmartUserDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int id;
+	private String id;
 	private String name;
 	private String password;
 	private String roles;
