@@ -30,7 +30,7 @@ public abstract class CommonEntity {
 
 	@Column(name = "PROC_APP_ID")
 	@Convert(converter = TrimConverter.class)
-	private String procApprId;
+	private String procAppId;
 
 	@Column(name = "PROC_USER_ID")
 	@Convert(converter = TrimConverter.class)

@@ -38,12 +38,12 @@ public class AssetDetailDto extends CommonDto implements Serializable {
 		this.host = AwsUtil.S3_HOST;
 		this.bucketName = AwsUtil.S3_ASSETS_BUCKET;
 		this.type = AwsUtil.retrieveContentType(multipartFile);
-		this.setProcApprId(appId);
+		this.setProcAppId(appId);
 		this.setProcUserId(userId);
 		this.name = AwsUtil.formatFileName(multipartFile.getOriginalFilename());
 		this.category = category;
 		this.journeyDate = journeyDate;
-		this.filePath = AwsUtil.prepareS3Query(this.type, this.getProcApprId(), this.getProcUserId(), category, journeyDate, this.name);
+		this.filePath = AwsUtil.prepareS3Query(this.type, this.getProcAppId(), this.getProcUserId(), category, journeyDate, this.name);
 		this.url = AwsUtil.prepareS3Url(this.filePath);
 	}
 

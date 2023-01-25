@@ -40,5 +40,6 @@ public class SmartUserContextDto implements Serializable {
 	private String facebookUrl;
 	private String instagramUrl;
 	private String linkedInUrl;
+	private Integer primaryAddressId;
 	
 }

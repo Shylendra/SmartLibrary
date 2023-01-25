@@ -22,7 +22,7 @@ public class CommonDto {
 	private String procTs;
 	
 	@JsonIgnore
-	private String procApprId;
+	private String procAppId;
 	
 	@JsonIgnore
 	private String procUserId;

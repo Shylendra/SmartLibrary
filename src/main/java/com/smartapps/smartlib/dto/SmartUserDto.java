@@ -3,16 +3,13 @@ package com.smartapps.smartlib.dto;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Convert;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.smartapps.smartlib.converter.TrimConverter;
 import com.smartapps.smartlib.util.SmartDateUtil;
 import com.smartapps.smartlib.util.SmartLibraryUtil;
 
@@ -51,29 +48,48 @@ public class SmartUserDto implements Serializable {
 	private String facebookUrl;
 	private String instagramUrl;
 	private String linkedInUrl;
+	private Integer primaryAddressId;
+	private String primaryAddress;
 	private List<AddressDto> addresses;
 	
-	@JsonIgnore
 	private String procTs;
 	
-	@JsonIgnore
-	private String procApprId;
+	private String procAppId;
 	
-	@JsonIgnore
 	private String procUserId;
 	
-	@JsonIgnore
 	private String procUserIpAddress;
 	
-	@JsonIgnore
 	private String procUserLatitude;
 
-	@JsonIgnore
 	private String procUserLongitude;
 	
 	@JsonIgnore
 	private long version;
+
+	public String getPrimaryAddress() {
+		for(AddressDto address: getAddresses()) {
+			if(primaryAddressId.intValue() == address.getId()) {
+				this.primaryAddress = String.format("%s, %s, %s, %s, %s, %s", 
+						address.getAddressLine1(), 
+						address.getAddressLine2(), 
+						address.getCity(), 
+						address.getState(), 
+						address.getCountry(), 
+						address.getPostalCode());
+				return this.primaryAddress;
+			}
+		}
+		return null;
+	}
 	
+	public List<AddressDto> getAddresses() {
+		if(this.addresses == null) {
+			return new ArrayList<>();
+		}
+		return this.addresses;
+	}
+
 	@JsonIgnore
 	public Date getSqlDob() {
 		if(StringUtils.isNotEmpty(dob)) {
