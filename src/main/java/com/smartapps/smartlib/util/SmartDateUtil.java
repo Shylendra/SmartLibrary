@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class SmartDateUtil {
 
@@ -14,6 +15,20 @@ public class SmartDateUtil {
 	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	public static final DateTimeFormatter DATE_TIME_FORMAT_UNIQUE = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
+    public static Date addDays(Date date, int days) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, days);
+        return new Date(c.getTimeInMillis());
+    }
+    
+    public static Date subtractDays(Date date, int days) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, -days);
+        return new Date(c.getTimeInMillis());
+    }
+    
 	public static String getCurrentSystemDateTimeUniqueStr() {
 		return LocalDateTime.now().format(DATE_TIME_FORMAT_UNIQUE);
 	}

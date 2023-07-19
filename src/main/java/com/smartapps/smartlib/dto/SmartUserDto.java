@@ -44,6 +44,9 @@ public class SmartUserDto implements Serializable {
 	private String email;
 	private String profilePhotoPath;
 	private Boolean active;
+	private String activationToken;
+	private String activationTokenExpiryDate;
+	private String userStatus;
 	private String twitterUrl;
 	private String facebookUrl;
 	private String instagramUrl;
@@ -94,6 +97,14 @@ public class SmartUserDto implements Serializable {
 	public Date getSqlDob() {
 		if(StringUtils.isNotEmpty(dob)) {
 			return SmartDateUtil.parseDate(dob);
+		}
+		return SmartDateUtil.getCurrentSystemDate();
+	}
+
+	@JsonIgnore
+	public Date getSqlActivationTokenExpiryDate() {
+		if(StringUtils.isNotEmpty(activationTokenExpiryDate)) {
+			return SmartDateUtil.parseDate(activationTokenExpiryDate);
 		}
 		return SmartDateUtil.getCurrentSystemDate();
 	}

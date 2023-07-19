@@ -2,6 +2,8 @@ package com.smartapps.smartlib.util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,6 +44,25 @@ public final class SmartHttpUtil {
 	
 	private static final String LOCALHOST_IPV4 = "127.0.0.1";
 	private static final String LOCALHOST_IPV6 = "0:0:0:0:0:0:0:1";
+
+	public static Map<String,Object> filterSmartHeader(Map<String,Object> headers) {
+		Map<String,Object> headerFilteredMap = new HashMap<>();
+		if(!headers.isEmpty()) {
+			if(headers.get(SmartHttpUtil.APP_ID_HEADER.toLowerCase()) != null) {
+				headerFilteredMap.put(SmartHttpUtil.APP_ID_HEADER, headers.get(SmartHttpUtil.APP_ID_HEADER.toLowerCase()));
+			}
+			if(headers.get(SmartHttpUtil.USER_ID_HEADER.toLowerCase()) != null) {
+				headerFilteredMap.put(SmartHttpUtil.USER_ID_HEADER, headers.get(SmartHttpUtil.USER_ID_HEADER.toLowerCase()));
+			}
+			if(headers.get(SmartHttpUtil.USER_GROUPS_HEADER.toLowerCase()) != null) {
+				headerFilteredMap.put(SmartHttpUtil.USER_GROUPS_HEADER, headers.get(SmartHttpUtil.USER_GROUPS_HEADER.toLowerCase()));
+			}
+			if(headers.get(SmartHttpUtil.AUTH_HEADER.toLowerCase()) != null) {
+				headerFilteredMap.put(SmartHttpUtil.AUTH_HEADER, headers.get(SmartHttpUtil.AUTH_HEADER.toLowerCase()));
+			}
+		}
+		return headerFilteredMap;
+	}
 
 	public static String getHeaderAppId(HttpServletRequest request) {
 		final String appId = request.getHeader(APP_ID_HEADER);

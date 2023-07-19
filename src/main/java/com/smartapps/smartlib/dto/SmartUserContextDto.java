@@ -36,6 +36,9 @@ public class SmartUserContextDto implements Serializable {
 	private String email;
 	private String profilePhotoPath;
 	private Boolean active;
+	private String activationToken;
+	private String activationTokenExpiryDate;
+	private String userStatus;
 	private String twitterUrl;
 	private String facebookUrl;
 	private String instagramUrl;
